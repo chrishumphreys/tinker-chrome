@@ -36,7 +36,9 @@ Initially the extension is disabled (to avoid manipulating any site you visit).
 
 Navigate to the site you wish to edit, click the easel and click 'Apply tinkerings and enable editing'
 
-There is a lot of scope for additional features. Leave a comment to vote four your
+See https://github.com/chrishumphreys/tinker-chrome/wiki
+
+There is a lot of scope for additional features, raise a ticket to request yours.
 
 # Support
 
