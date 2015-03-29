@@ -2,7 +2,8 @@
     "manifest_version": 2,
 
     "name": "Tinker Chrome",
-    "description": "Get designing. Customize web page text",
+    "short_name": "Tinker",
+    "description": "Get designing. Customize web page text and share with others.",
     "version": "1.0",
     "permissions": [
         "activeTab",
@@ -18,5 +19,10 @@
     "browser_action": {
         "default_icon": "icon32.png",
         "default_popup": "popup.html"
+    },
+    "icons": {
+        "32": "icon32.png",
+        "64": "icon64.png",
+        "128": "icon128.png"
     }
 }
