@@ -38,7 +38,11 @@ Navigate to the site you wish to edit, click the easel and click 'Apply tinkerin
 
 There is a lot of scope for additional features. Leave a comment to vote four your
 
+# Support
 
+Check out the FAQ (https://github.com/chrishumphreys/tinker-chrome/wiki).
+
+If you think you have found a bug or have suggestions feel free to raise an ticket in GitHub (https://github.com/chrishumphreys/tinker-chrome/issues).
 
 
 # Developing and contributing
