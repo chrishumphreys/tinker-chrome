@@ -1,0 +1,167 @@
+<!doctype html>
+<html>
+<head>
+  <title>Tinker Chrome</title>
+  <link rel="stylesheet" href="bootstrap.min.css" />
+  <script src="angular.js"></script>
+  <script src="popup.js"></script>
+  <style>
+  body {
+    min-width: 357px;
+    min-height: 357px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    margin:10px;
+  }
+
+  .bs-example {
+      margin-right: 0;
+      margin-left: 0;
+      background-color: #fff;
+      border-color: #ddd;
+      border-width: 1px;
+      border-radius: 4px 4px 0 0;
+      -webkit-box-shadow: none;
+      box-shadow: none;
+  }
+
+  h2 {
+      font-size: 1.5em;;
+  }
+
+  h3 {
+      font-size: 1.1em;;
+  }
+
+  .row {
+      margin-bottom: 10px;
+  }
+
+  .highlight {
+      padding: 9px 14px;
+      margin-bottom: 14px;
+      background-color: #f7f7f9;
+      border: 1px solid #e1e1e8;
+      border-radius: 4px;
+  }
+
+  .highlight li {
+      margin-left: 10px;
+  }
+  </style>
+
+</head>
+<body ng-app="tinkerApp">
+  <div ng-controller="MainCtrl">
+
+    <div ng-switch="showFinishPanel">
+
+
+        <!-- FINISH EDITING PANEL ------------------------------------ -->
+        <div ng-switch-when="true">
+
+        <div class="container-fluid">
+            <form>
+            <div class="row">
+            <div class="form-group col-lg-1">
+                <label for="save-url-pattern">Url pattern: </label>
+                <input class="form-control" id="save-url-pattern" ng-model="finishUrl" type="text">
+                <p class="help-block">The pattern of URLs to which this change will apply. You can leave it
+                as is and the change will apply only to this exact page on this host. Alternatively you
+                can replace parts of the URL with *, for example to apply to other hosts you can replace the hostname with *
+                </p>
+            </div>
+            <!--
+            <div class="form-group col-lg-1">
+                <label for="save-friendly-name">Change name: </label>
+                <input class="form-control" id="save-friendly-name" ng-model="finishFriendlyName" type="text">
+                <p class="help-block">A recognizable label for this change, used in change lists and screenshots</p>
+            </div>
+            -->
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <a class="btn btn-primary" ng-click="finishEditing(finishUrl, finishFriendlyName)">Save</a>
+              <a class="btn btn-secondary" ng-click="close()">close</a>
+            </div>
+          </div>
+          </form>
+        </div>
+      </div>
+        <!-- END FINISH EDITING PANEL ------------------------------------ -->
+
+        <div ng-switch-default>
+        <div ng-switch="enabled">
+
+          <!-- MAIN TINKER EDITING PANEL ------------------------------------ -->
+          <div ng-switch-when="true">
+            <div class="container-fluid">
+              <div class="row">
+                  <h2>Tinker Chrome is currently enabled</h2> (<a ng-click="disable()">disable</a>)
+              </div>
+              <div class="row bs-example">
+                    You are viewing:
+                    <br/>
+                    {{currentPage}}
+                    <br/>
+                    {{diffMessage}}
+                    <br/>
+              </div>
+              <div class="row">
+                <a class="btn btn-primary" ng-click="startEditing()"> start editing </a>
+                <a class="btn btn-primary" ng-click="showFinishEditing()"> finish editing </a>
+              </div>
+              <div class="row">
+                Tinkered Pages : ({{saves.length || 0}})
+                <span ng-show="saves.length>0">
+                  <a ng-click="clear()">clear</a>
+                </span>
+                <ul class="highlight">
+                  <li ng-repeat="m in saves track by $index">{{m}}</li>
+                </ul>
+                <!--<br/>-->
+                  <!--<a ng-click="close()">close</a>-->
+               </div>
+
+              <div class="row">
+                  <div class="col-md-12">
+                      <label for="notifications">Show notifications &nbsp; </label><input type="checkbox" id="notifications" ng-model="notificationsEnabled" ng-change="toggleNotifications(notificationsEnabled)">
+                          <h3>Saved screenshots</h3>
+                            <ul>
+                                <li ng-show="haveScreenshots"><a ng-click="openHtml()">Open html</a></li>
+                                <li ng-show="!haveScreenshots">None available. Disable Tinker chrome and press screenshot button.</li>
+                            </ul>
+                      </div>
+                  </div>
+            </div>
+          </div>
+
+            <!-- TINKER DISABLED PANEL ------------------------------------ -->
+            <div ng-switch-default>
+              <div class="container-fluid">
+                  <div class="row">
+                      <h2>Tinker Chrome is currently disabled</h2>
+                      <p> You are currently viewing the unaltered pages.</p>
+                      <p>Enable editing mode to apply and design new changes</p>
+                      <a class="btn btn-primary" ng-click="enable()">Apply tinkerings and enable editing</a>
+                  </div>
+                  <div class="row">
+                      <br>
+                      <p>Or for changes you are already happy record screenshots of the changes:</p>
+                      <p>With Tinker disabled, refresh the page and then press </p>
+                      <a class="btn btn-primary" ng-click="enableWithScreenshots()">take screenshots</a>
+                  </div>
+
+                  <div class="row">
+                      <div class="col-md-12">
+                          <label for="notifications2">Show notifications &nbsp; </label><input type="checkbox" id="notifications2" ng-model="notificationsEnabled" ng-change="toggleNotifications(notificationsEnabled)">
+                      </div>
+                  </div>
+              </div>
+           </div>
+        </div>
+        </div>
+    </div>
+  </div>
+  </body>
+</html>

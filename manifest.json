@@ -1,0 +1,22 @@
+{
+    "manifest_version": 2,
+
+    "name": "Tinker Chrome",
+    "description": "Get designing. Customize web page text",
+    "version": "1.0",
+    "permissions": [
+        "activeTab",
+        "http://*/",
+        "https://*/",
+        "storage",
+        "tabs",
+        "notifications"
+    ],
+    "background": {
+        "scripts": ["background.js"]
+    },
+    "browser_action": {
+        "default_icon": "icon32.png",
+        "default_popup": "popup.html"
+    }
+}
