@@ -26,8 +26,9 @@ for sending the the authors.
 
 # Getting started
 
-Install the extension either from the Chrome Web Store https://chrome.google.com/webstore/detail/dgmbfhhnljmmokimpapbpjkhnlgfolid
-or from this source.
+Install the extension either from the Chrome Web Store 
+https://chrome.google.com/webstore/detail/dgmbfhhnljmmokimpapbpjkhnlgfolid
+or from this source (in developer mode).
 
 An easel icon should be visible in the toolbar next to the location box.
 
